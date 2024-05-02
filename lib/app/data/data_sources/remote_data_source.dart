@@ -69,7 +69,7 @@ class RemoteDogBreedsFetchI extends FetchDogBreeds {
   Future<String> getBreedsImage({required String name}) async {
     var response = await http
         .get(Uri.parse("https://dog.ceo/api/breed/$name/images/random"));
-    var link = jsonDecode(response.body);
-    return link["message"];
+    var responseJson = jsonDecode(response.body);
+    return responseJson["message"];
   }
 }

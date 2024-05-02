@@ -7,6 +7,8 @@ class HomeScreenAppbar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: const Text("Dog App"),
+      leading: IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+      actions: [IconButton(onPressed: () {}, icon: Icon(Icons.settings))],
       centerTitle: true,
       automaticallyImplyLeading: false,
     );
