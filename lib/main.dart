@@ -1,8 +1,6 @@
 import 'package:dogs_app/app/core/get_it/get_it.dart';
 import 'package:dogs_app/app/core/navigator_helper/navigator_helper.dart';
 import 'package:dogs_app/app/screen/home_screen/bloc/home_bloc.dart';
-import 'package:dogs_app/app/screen/home_screen/bloc/home_bloc.dart';
-import 'package:dogs_app/app/screen/home_screen/home_screen_view.dart';
 import 'package:dogs_app/app/screen/main_screen/bloc/main_bloc.dart';
 import 'package:dogs_app/app/screen/settings_screen/bloc/settings_bloc.dart';
 import 'package:dogs_app/app/screen/splash%20screen/splash_screen_view.dart';
@@ -11,8 +9,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 Future<void> main() async {
+  setupGetIT();
+
   WidgetsFlutterBinding.ensureInitialized();
-  setupGetit();
 
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
@@ -31,12 +30,14 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => locator.get<HomeBloc>(),
+          create: (context) => locator.get<SettingsBloc>(),
         ),
         BlocProvider(
           create: (context) => locator.get<MainBloc>(),
         ),
-        BlocProvider(create: (context) => locator.get<SettingsBloc>())
+        BlocProvider(
+          create: (context) => locator.get<HomeBloc>(),
+        ),
       ],
       child: MaterialApp(
         theme: ThemeData(
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         navigatorKey: Navigation.navigationKey,
         title: 'Dog Apps',
-        home: HomeScreenView(),
+        home: SplashScreenView(),
       ),
     );
   }

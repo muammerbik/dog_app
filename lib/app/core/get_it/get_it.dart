@@ -1,3 +1,4 @@
+
 import 'package:dogs_app/app/data/data_sources/remote_data_source.dart';
 import 'package:dogs_app/app/data/repositories/dog_repository.dart';
 import 'package:dogs_app/app/domain/data_source/remote_data_source.dart';
@@ -7,27 +8,41 @@ import 'package:dogs_app/app/screen/main_screen/bloc/main_bloc.dart';
 import 'package:dogs_app/app/screen/settings_screen/bloc/settings_bloc.dart';
 import 'package:get_it/get_it.dart';
 
-final locator = GetIt.instance;
+final   locator = GetIt.instance;
 
-void setupGetit() {
-  setUpdataSource();
-  setUprepository();
-  setUpBloc();
+
+
+void setupGetIT() {
+  setupRepositories();
+  setupDatasource();
+  setupBLoC();
 }
 
-void setUpdataSource() {
-  locator.registerLazySingleton<FetchDogBreeds>(() => RemoteDogBreedsFetchI());
+void setupRepositories() {
+  locator.registerLazySingleton<Repository>(
+    () => DogRepository(
+      fetchDogBreeds: locator(),
+    ),
+  );
 }
 
-void setUprepository() {
-  locator.registerLazySingleton<Repository>(() => DogRepository());
+void setupDatasource() {
+  locator.registerLazySingleton<FetchDogBreeds>(
+    () => RemoteDogBreedsFetchI(),
+  );
 }
 
-void setUpBloc() {
+void setupBLoC() {
   locator
-    ..registerLazySingleton<HomeBloc>(() => HomeBloc(
-          dogRepository: locator(),
-        ))
-    ..registerLazySingleton<MainBloc>(() => MainBloc())
-    ..registerLazySingleton<SettingsBloc>(() => SettingsBloc());
+    ..registerLazySingleton<SettingsBloc>(
+      () => SettingsBloc(),
+    )
+    ..registerLazySingleton<MainBloc>(
+      () => MainBloc(),
+    )
+    ..registerLazySingleton<HomeBloc>(
+      () => HomeBloc(
+        dogRepository: locator(),
+      ),
+    );
 }
