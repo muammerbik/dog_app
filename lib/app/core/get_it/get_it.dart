@@ -25,7 +25,9 @@ void setUprepository() {
 
 void setUpBloc() {
   locator
-    ..registerLazySingleton<HomeBloc>(() => HomeBloc())
+    ..registerLazySingleton<HomeBloc>(() => HomeBloc(
+          dogRepository: locator(),
+        ))
     ..registerLazySingleton<MainBloc>(() => MainBloc())
     ..registerLazySingleton<SettingsBloc>(() => SettingsBloc());
 }
