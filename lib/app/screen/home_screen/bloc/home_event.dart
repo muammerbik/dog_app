@@ -7,12 +7,6 @@ sealed class HomeEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class HomeInitialEvent extends HomeEvent {
-  const HomeInitialEvent();
-
-  @override
-  List<Object> get props => [];
-}
 
 class FetchDogBreedsEvent extends HomeEvent {
   const FetchDogBreedsEvent();

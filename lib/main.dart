@@ -1,7 +1,8 @@
+import 'package:dogs_app/app/core/constants/color_constants.dart';
+import 'package:dogs_app/app/core/constants/text_constants.dart';
 import 'package:dogs_app/app/core/get_it/get_it.dart';
 import 'package:dogs_app/app/core/navigator_helper/navigator_helper.dart';
 import 'package:dogs_app/app/screen/home_screen/bloc/home_bloc.dart';
-import 'package:dogs_app/app/screen/main_screen/bloc/main_bloc.dart';
 import 'package:dogs_app/app/screen/settings_screen/bloc/settings_bloc.dart';
 import 'package:dogs_app/app/screen/splash%20screen/splash_screen_view.dart';
 import 'package:flutter/material.dart';
@@ -10,11 +11,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 Future<void> main() async {
   setupGetIT();
-
   WidgetsFlutterBinding.ensureInitialized();
-
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent,
+    statusBarColor: ColorConstants.transparent,
     statusBarIconBrightness: Brightness.dark,
   ));
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
@@ -33,20 +32,18 @@ class MyApp extends StatelessWidget {
           create: (context) => locator.get<SettingsBloc>(),
         ),
         BlocProvider(
-          create: (context) => locator.get<MainBloc>(),
-        ),
-        BlocProvider(
           create: (context) => locator.get<HomeBloc>(),
         ),
       ],
       child: MaterialApp(
         theme: ThemeData(
-            appBarTheme: const AppBarTheme(backgroundColor: Colors.white),
-            scaffoldBackgroundColor: Colors.white),
+            appBarTheme:
+                const AppBarTheme(backgroundColor: ColorConstants.white),
+            scaffoldBackgroundColor: ColorConstants.white),
         debugShowCheckedModeBanner: false,
         navigatorKey: Navigation.navigationKey,
-        title: 'Dog Apps',
-        home: SplashScreenView(),
+        title: TextConstants.dogApp,
+        home: const SplashScreenView(),
       ),
     );
   }

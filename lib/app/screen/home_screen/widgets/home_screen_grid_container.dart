@@ -19,7 +19,7 @@ class HomeScrenGridContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder(
+    return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) => GestureDetector(
         onTap: () {
           SetSelectedIndexEvent(selectedIndex: index);
@@ -33,7 +33,8 @@ class HomeScrenGridContainer extends StatelessWidget {
           height: 200,
           alignment: Alignment.bottomLeft,
           decoration: BoxDecoration(
-            color: Colors.amber,
+            image:
+                DecorationImage(image: FileImage(imageUrl), fit: BoxFit.cover),
             borderRadius: BorderRadius.circular(8),
           ),
           child: ClipRRect(

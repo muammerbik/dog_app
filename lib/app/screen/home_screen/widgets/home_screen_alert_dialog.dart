@@ -4,9 +4,7 @@ import 'package:dogs_app/app/core/enums/app_radius.dart';
 import 'package:dogs_app/app/core/enums/space.dart';
 import 'package:dogs_app/app/screen/home_screen/bloc/home_bloc.dart';
 import 'package:dogs_app/app/screen/home_screen/widgets/home_screen_generate_button.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeScreenAlertDialog extends StatelessWidget {
@@ -32,17 +30,16 @@ class HomeScreenAlertDialog extends StatelessWidget {
                 width: double.infinity,
                 height: DeviceConfig.screenWidth! * 0.60,
                 decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: FileImage(
-                        state.dogBreedsList[state.selectedIndex].imagePath!,
-                      ),
-                      fit: BoxFit.cover),
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(12),
-                    topRight: Radius.circular(12),
-                  ),
-                  color: Colors.white,
-                ),
+                    image: DecorationImage(
+                        image: FileImage(
+                          state.dogBreedsList[state.selectedIndex].imagePath!,
+                        ),
+                        fit: BoxFit.cover),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(12),
+                      topRight: Radius.circular(12),
+                    ),
+                    color: ColorConstants.white),
                 child: Align(
                   alignment: Alignment.topRight,
                   child: CircleAvatar(
@@ -86,8 +83,8 @@ class HomeScreenAlertDialog extends StatelessWidget {
                   : Expanded(
                       child: ListView.builder(
                         shrinkWrap: true,
-                        itemCount: state
-                            .dogBreedsList[state.selectedIndex].subBreeds!.length,
+                        itemCount: state.dogBreedsList[state.selectedIndex]
+                            .subBreeds!.length,
                         itemBuilder: (context, index) => Padding(
                           padding: const EdgeInsets.only(bottom: 4.0),
                           child: Center(
@@ -101,9 +98,9 @@ class HomeScreenAlertDialog extends StatelessWidget {
                         ),
                       ),
                     ),
-             
               SpaceHeight.m.value,
               HomeScreenGenerateButton(),
+              SpaceHeight.m.value,
             ],
           ),
         ),

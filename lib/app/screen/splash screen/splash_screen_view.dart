@@ -1,3 +1,4 @@
+import 'package:dogs_app/app/core/constants/color_constants.dart';
 import 'package:dogs_app/app/core/get_it/get_it.dart';
 import 'package:dogs_app/app/screen/home_screen/bloc/home_bloc.dart';
 import 'package:dogs_app/app/screen/home_screen/home_screen_view.dart';
@@ -20,20 +21,16 @@ class SplashScreenView extends StatelessWidget {
         },
         bloc: locator.get<HomeBloc>()..add(const FetchDogBreedsEvent()),
         child: Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: ColorConstants.white,
           body: SafeArea(
-            child: SizedBox(
-              width: 200,
-              height: 200,
-              child: Center(
-                child: Container(
-                  width: 200,
-                  height: 200,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(
-                        "assets/icons/img_appicon.png",
-                      ),
+            child: Center(
+              child: Container(
+                width: 200,
+                height: 200,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(
+                      "assets/images/dog.png",
                     ),
                   ),
                 ),
