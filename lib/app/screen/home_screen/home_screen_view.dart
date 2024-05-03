@@ -1,3 +1,4 @@
+import 'package:dogs_app/app/core/device_config/device_config.dart';
 import 'package:dogs_app/app/screen/home_screen/bloc/home_bloc.dart';
 import 'package:dogs_app/app/screen/home_screen/widgets/home_screen_appbar.dart';
 import 'package:dogs_app/app/screen/home_screen/widgets/home_screen_grid_container.dart';
@@ -9,6 +10,7 @@ class HomeScreenView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DeviceConfig().init(context);
     var bloc = context.read<HomeBloc>();
     return Scaffold(
         appBar: const HomeScreenAppbar(),
@@ -22,8 +24,8 @@ class HomeScreenView extends StatelessWidget {
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2, mainAxisSpacing: 15, crossAxisSpacing: 15),
               itemBuilder: (context, index) => HomeScrenGridContainer(
+                index: index,
                 name: state.dogBreedsList[index].name!,
-                index:state.selectedIndex,
                 imageUrl: state.dogBreedsList[index].imagePath!,
               ),
             ),

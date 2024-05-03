@@ -1,6 +1,8 @@
 import 'dart:io';
 import 'dart:ui';
 
+import 'package:dogs_app/app/core/constants/color_constants.dart';
+import 'package:dogs_app/app/core/device_config/device_config.dart';
 import 'package:dogs_app/app/screen/home_screen/bloc/home_bloc.dart';
 import 'package:dogs_app/app/screen/home_screen/widgets/home_screen_alert_dialog.dart';
 import 'package:flutter/material.dart';
@@ -19,18 +21,24 @@ class HomeScrenGridContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DeviceConfig().init(context);
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) => GestureDetector(
         onTap: () {
-          SetSelectedIndexEvent(selectedIndex: index);
+          context
+              .read<HomeBloc>()
+              .add(SetSelectedIndexEvent(selectedIndex: index));
+
+          context
+              .read<HomeBloc>()
+              .add(FetchRandomImageEvent(fetchRandomImage: name));
+          // Alert dialogu göster
           showDialog(
-              barrierDismissible: false,
-              context: context,
-              builder: (context) => const HomeScreenAlertDialog());
+            context: context,
+            builder: (context) => HomeScreenAlertDialog(),
+          );
         },
         child: Container(
-          width: 200,
-          height: 200,
           alignment: Alignment.bottomLeft,
           decoration: BoxDecoration(
             image:
@@ -43,10 +51,9 @@ class HomeScrenGridContainer extends StatelessWidget {
               child: IntrinsicWidth(
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
-                  height: 40,
+                  height: DeviceConfig.screenHeight! * 0.032,
                   decoration: BoxDecoration(
-                    image: DecorationImage(image: FileImage(imageUrl)),
-                    color: Colors.black.withOpacity(0.24),
+                    color: ColorConstants.black.withOpacity(0.24),
                     borderRadius: const BorderRadius.only(
                       topRight: Radius.circular(8),
                       bottomLeft: Radius.circular(8),
@@ -55,7 +62,8 @@ class HomeScrenGridContainer extends StatelessWidget {
                   child: Center(
                       child: Text(
                     name,
-                    style: const TextStyle(fontSize: 16, color: Colors.white),
+                    style: const TextStyle(
+                        fontSize: 16, color: ColorConstants.white),
                   )),
                 ),
               ),

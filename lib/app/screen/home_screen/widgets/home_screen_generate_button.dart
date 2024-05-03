@@ -1,5 +1,7 @@
+import 'package:dogs_app/app/core/constants/color_constants.dart';
+import 'package:dogs_app/app/core/constants/text_constants.dart';
+import 'package:dogs_app/app/core/device_config/device_config.dart';
 import 'package:dogs_app/app/screen/home_screen/bloc/home_bloc.dart';
-import 'package:dogs_app/app/screen/home_screen/widgets/home_screen_generate_alert_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,6 +10,7 @@ class HomeScreenGenerateButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DeviceConfig().init(context);
     var bloc = context.read<HomeBloc>();
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) => InkWell(
@@ -18,33 +21,79 @@ class HomeScreenGenerateButton extends StatelessWidget {
           await Future.delayed(Duration(microseconds: 300)).whenComplete(
             () {
               showDialog(
-                  context: context,
-                  barrierDismissible: false,
-                  builder: (context) => BlocBuilder<HomeBloc, HomeState>(
-                        builder: (context, state) =>
-                            HomeScreenGenerateAlertDialog(),
-                      ),);
+                context: context,
+                barrierDismissible: false,
+                builder: (context) => BlocBuilder<HomeBloc, HomeState>(
+                  builder: (context, state) => Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      AlertDialog(
+                        surfaceTintColor: ColorConstants.transparent,
+                        backgroundColor: ColorConstants.transparent,
+                        contentPadding: EdgeInsets.zero,
+                        content: Container(
+                          height: DeviceConfig.screenHeight! * 0.40,
+                          width: DeviceConfig.screenWidth! * 0.45,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(12),
+                              topRight: Radius.circular(12),
+                            ),
+                            image: DecorationImage(
+                                image: NetworkImage(
+                                  state.fetchImageName,
+                                ),
+                                fit: BoxFit.cover),
+                          ),
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ButtonBar(
+                            children: [
+                              ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(TextConstants.Cancel)),
+                              ElevatedButton(
+                                  onPressed: () {
+                                    bloc.add(
+                                      FetchRandomImageEvent(
+                                        fetchRandomImage: state
+                                            .dogBreedsList[state.selectedIndex]
+                                            .name!,
+                                      ),
+                                    );
+                                  },
+                                  child: Text(TextConstants.newGenerate)),
+                            ],
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              );
             },
           );
         },
         child: Container(
-          height: 50,
-          width: 150,
+          height: DeviceConfig.screenHeight! * 0.070,
+          width: DeviceConfig.screenWidth! * 0.35,
           decoration: BoxDecoration(
-            image: DecorationImage(
-                image: NetworkImage(
-                  state.fetchImageName,
-                ),
-                fit: BoxFit.contain),
             borderRadius: BorderRadius.circular(12),
-            color: Colors.green,
-            border: Border.all(color: Colors.grey, width: 1),
+            color: ColorConstants.greenShade600,
+            border: Border.all(color: ColorConstants.white, width: 2),
           ),
           child: Align(
             alignment: Alignment.center,
             child: Text(
-              "Generate",
-              style: TextStyle(color: Colors.white),
+              TextConstants.Generate,
+              style: TextStyle(color: ColorConstants.white),
             ),
           ),
         ),

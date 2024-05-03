@@ -1,12 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:dogs_app/app/data/models/dog_breed_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 
-class DogRemoteDataSourceImpl  {
-  @override
+class DogRemoteDataSourceImpl {
+  final String fetchAllBreeds = "https://dog.ceo/api/breeds/list/all";
   Future<List<DogBreedModel>> fetchBreeds() async {
     Directory directory = await getApplicationDocumentsDirectory();
     directory.listSync().forEach((FileSystemEntity entity) {
@@ -14,23 +13,22 @@ class DogRemoteDataSourceImpl  {
         entity.deleteSync();
       }
     });
-    var response =
-        await http.get(Uri.parse("https://dog.ceo/api/breeds/list/all"));
-    var breedsData = jsonDecode(response.body);
-    var breeds = breedsData["message"] as Map<String, dynamic>;
+    var response = await http.get(Uri.parse(fetchAllBreeds));
+    var responseJson = jsonDecode(response.body);
+    var responseResult = responseJson["message"] as Map<String, dynamic>;
 
-    List<DogBreedModel> breedModels = [];
-    for (var breed in breeds.keys) {
+    List<DogBreedModel> breedList = [];
+    for (var breed in responseResult.keys) {
       File file = File("");
-      List<String> subBreeds = List<String>.from(breeds[breed]);
+      List<String> subBreeds = List<String>.from(responseResult[breed]);
       String imageUrl = '';
 
-      var imageUrlResponse = await http.get(
+      var imageResponse = await http.get(
         Uri.parse("https://dog.ceo/api/breed/$breed/images/random"),
       );
 
-      if (imageUrlResponse.statusCode == 200) {
-        var imageUrlData = jsonDecode(imageUrlResponse.body);
+      if (imageResponse.statusCode == 200) {
+        var imageUrlData = jsonDecode(imageResponse.body);
 
         imageUrl = imageUrlData["message"];
         Future<File> getLocalImageFile() async {
@@ -54,18 +52,17 @@ class DogRemoteDataSourceImpl  {
       }
 
       if (imageUrl.isNotEmpty) {
-        breedModels.add(
+        breedList.add(
             DogBreedModel(name: breed, imagePath: file, subBreeds: subBreeds));
       }
     }
-    return breedModels;
+    return breedList;
   }
 
-  @override
   Future<String> fetchBreedByName({required String name}) async {
     http.Response response = await http
         .get(Uri.parse("https://dog.ceo/api/breed/$name/images/random"));
-    var link = jsonDecode(response.body);
-    return link["message"];
+    var responseJson = jsonDecode(response.body);
+    return responseJson["message"];
   }
 }

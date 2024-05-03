@@ -1,3 +1,4 @@
+import 'package:dogs_app/app/core/constants/text_constants.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreenAppbar extends StatelessWidget implements PreferredSizeWidget {
@@ -6,9 +7,9 @@ class HomeScreenAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: const Text("Dog App"),
-      leading: IconButton(onPressed: () {}, icon: Icon(Icons.search)),
-      actions: [IconButton(onPressed: () {}, icon: Icon(Icons.settings))],
+      title: const Text(TextConstants.dogApp),
+      leading: IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
+      actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.settings))],
       centerTitle: true,
       automaticallyImplyLeading: false,
     );

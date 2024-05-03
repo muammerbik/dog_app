@@ -1,5 +1,7 @@
 import 'package:dogs_app/app/core/constants/color_constants.dart';
+import 'package:dogs_app/app/core/constants/text_constants.dart';
 import 'package:dogs_app/app/core/device_config/device_config.dart';
+import 'package:dogs_app/app/core/enums/app_padding.dart';
 import 'package:dogs_app/app/core/enums/app_radius.dart';
 import 'package:dogs_app/app/core/enums/space.dart';
 import 'package:dogs_app/app/screen/home_screen/bloc/home_bloc.dart';
@@ -13,7 +15,6 @@ class HomeScreenAlertDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     DeviceConfig().init(context);
-
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) => AlertDialog(
         backgroundColor: ColorConstants.white,
@@ -22,7 +23,9 @@ class HomeScreenAlertDialog extends StatelessWidget {
           borderRadius: AppRadius.m.value,
         ),
         content: Container(
-          height: DeviceConfig.screenHeight! * 0.60,
+          height: state.dogBreedsList[state.selectedIndex].subBreeds!.isNotEmpty
+              ? DeviceConfig.screenHeight! * 0.61
+              : DeviceConfig.screenHeight! * 0.55,
           width: DeviceConfig.screenWidth! * 0.67,
           child: Column(
             children: [
@@ -43,41 +46,42 @@ class HomeScreenAlertDialog extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.topRight,
                   child: CircleAvatar(
-                      backgroundColor: ColorConstants.transparent,
-                      maxRadius: 24,
+                      backgroundColor: ColorConstants.white,
+                      maxRadius: 20,
                       child: IconButton(
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        icon: Icon(Icons.close),
+                        icon: const Icon(Icons.close,
+                            color: ColorConstants.black),
                       )),
                 ),
               ),
               SpaceHeight.m.value,
               Text(
-                "Breed",
+                TextConstants.breed,
                 style: TextStyle(
-                    color: ColorConstants.green,
+                    color: ColorConstants.greenShade600,
                     fontSize: 20,
                     fontWeight: FontWeight.w600),
               ),
-              Divider(),
+              const Divider(),
               Text(
                 state.dogBreedsList[state.selectedIndex].name!,
-                style: TextStyle(
+                style: const TextStyle(
                     color: Colors.black,
                     fontSize: 17,
                     fontWeight: FontWeight.w400),
               ),
-              Divider(),
+              const Divider(),
               Text(
-                "Sub Breed",
+                TextConstants.subBreed,
                 style: TextStyle(
-                    color: ColorConstants.green,
+                    color: ColorConstants.greenShade600,
                     fontSize: 20,
                     fontWeight: FontWeight.w600),
               ),
-              Divider(),
+              const Divider(),
               state.dogBreedsList[state.selectedIndex].subBreeds!.isEmpty
                   ? const SizedBox()
                   : Expanded(
@@ -86,21 +90,29 @@ class HomeScreenAlertDialog extends StatelessWidget {
                         itemCount: state.dogBreedsList[state.selectedIndex]
                             .subBreeds!.length,
                         itemBuilder: (context, index) => Padding(
-                          padding: const EdgeInsets.only(bottom: 4.0),
+                          padding: AppPaddingBottom.s.value,
                           child: Center(
-                            child: Text(
-                              state.dogBreedsList[state.selectedIndex]
-                                  .subBreeds![index],
-                              style: const TextStyle(
-                                  color: Colors.black, fontSize: 16),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: ColorConstants.greenShade300,
+                                  borderRadius: BorderRadius.circular(6)),
+                              child: Padding(
+                                padding: AppPaddingAll.m.value,
+                                child: Text(
+                                  state.dogBreedsList[state.selectedIndex]
+                                      .subBreeds![index],
+                                  style: const TextStyle(
+                                      color: ColorConstants.black,
+                                      fontSize: 16),
+                                ),
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ),
-              SpaceHeight.m.value,
-              HomeScreenGenerateButton(),
-              SpaceHeight.m.value,
+              SpaceHeight.s.value,
+              const HomeScreenGenerateButton(),
             ],
           ),
         ),

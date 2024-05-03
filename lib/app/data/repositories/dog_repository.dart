@@ -4,11 +4,11 @@ import 'package:dogs_app/app/core/result/result_data.dart';
 import 'package:dogs_app/app/core/result/succes_data_result.dart';
 import 'package:dogs_app/app/data/data_sources/remote_data_source.dart';
 import 'package:dogs_app/app/data/models/dog_breed_model.dart';
-import 'package:dogs_app/app/domain/data_source/remote_data_source.dart';
 import 'package:dogs_app/app/domain/repository/repository.dart';
 
 class DogRepository implements Repository {
-  final DogRemoteDataSourceImpl _remoteDogBreedsFetchI = DogRemoteDataSourceImpl();
+  final DogRemoteDataSourceImpl _remoteDogBreedsFetchI =
+      DogRemoteDataSourceImpl();
 
   @override
   Future<DataResult<List<DogBreedModel>>> getAllBreeds() async {
