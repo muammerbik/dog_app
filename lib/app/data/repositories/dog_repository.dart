@@ -1,4 +1,3 @@
-import 'package:dogs_app/app/core/get_it/get_it.dart';
 import 'package:dogs_app/app/core/result/error_data_result.dart';
 import 'package:dogs_app/app/core/result/result_data.dart';
 import 'package:dogs_app/app/core/result/succes_data_result.dart';

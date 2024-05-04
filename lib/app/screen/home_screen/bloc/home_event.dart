@@ -7,7 +7,6 @@ sealed class HomeEvent extends Equatable {
   List<Object> get props => [];
 }
 
-
 class FetchDogBreedsEvent extends HomeEvent {
   const FetchDogBreedsEvent();
 
@@ -17,7 +16,7 @@ class FetchDogBreedsEvent extends HomeEvent {
 
 class SetSelectedIndexEvent extends HomeEvent {
   final int selectedIndex;
- const SetSelectedIndexEvent({required this.selectedIndex});
+  const SetSelectedIndexEvent({required this.selectedIndex});
 
   @override
   List<Object> get props => [selectedIndex];
@@ -37,4 +36,12 @@ class ChangeTextFieldStatus extends HomeEvent {
 
   @override
   List<Object> get props => [textFieldSatus];
+}
+
+class SearchBarEvent extends HomeEvent {
+  const SearchBarEvent({required this.searchName});
+  final String searchName;
+
+  @override
+  List<Object> get props => [searchName];
 }
