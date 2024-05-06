@@ -42,11 +42,11 @@ class HomeScreenView extends StatelessWidget {
                     )
                   : state.searchList.isEmpty
                       ? const Center(
-                          child: const Text(
-                            TextConstants.notSearch,
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.w400),
-                          ))
+                          child: Text(
+                          TextConstants.notSearch,
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.w400),
+                        ))
                       : Padding(
                           padding: AppPaddingAll.m.value,
                           child: GridView.builder(
@@ -69,8 +69,9 @@ class HomeScreenView extends StatelessWidget {
               Padding(
                 padding: AppPaddingBottom.xxl.value,
                 child: const Align(
-                    alignment: Alignment.bottomCenter,
-                    child: HomeScreenTextField()),
+                  alignment: Alignment.bottomCenter,
+                  child: HomeScreenTextField(),
+                ),
               ),
             ],
           );

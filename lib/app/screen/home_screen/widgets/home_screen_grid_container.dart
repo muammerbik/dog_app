@@ -60,11 +60,12 @@ class HomeScrenGridContainer extends StatelessWidget {
                     ),
                   ),
                   child: Center(
-                      child: Text(
-                    name,
-                    style: const TextStyle(
-                        fontSize: 16, color: ColorConstants.white),
-                  )),
+                    child: Text(
+                      name,
+                      style: const TextStyle(
+                          fontSize: 16, color: ColorConstants.white),
+                    ),
+                  ),
                 ),
               ),
             ),

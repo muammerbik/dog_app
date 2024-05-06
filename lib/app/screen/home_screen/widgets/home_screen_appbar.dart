@@ -11,12 +11,13 @@ class HomeScreenAppbar extends StatelessWidget implements PreferredSizeWidget {
       title: const Text(TextConstants.dogApp),
       actions: [
         IconButton(
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const SettingsScreenView(),
-              ));
-            },
-            icon: const Icon(Icons.settings))
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const SettingsScreenView(),
+            ));
+          },
+          icon: const Icon(Icons.settings),
+        ),
       ],
       centerTitle: true,
       automaticallyImplyLeading: false,

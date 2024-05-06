@@ -46,15 +46,16 @@ class HomeScreenAlertDialog extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.topRight,
                   child: CircleAvatar(
-                      backgroundColor: ColorConstants.white,
-                      maxRadius: 20,
-                      child: IconButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: const Icon(Icons.close,
-                            color: ColorConstants.black),
-                      )),
+                    backgroundColor: ColorConstants.white,
+                    maxRadius: 20,
+                    child: IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon:
+                          const Icon(Icons.close, color: ColorConstants.black),
+                    ),
+                  ),
                 ),
               ),
               SpaceHeight.m.value,
@@ -94,8 +95,9 @@ class HomeScreenAlertDialog extends StatelessWidget {
                           child: Center(
                             child: Container(
                               decoration: BoxDecoration(
-                                  color: ColorConstants.greenShade300,
-                                  borderRadius: BorderRadius.circular(6)),
+                                color: ColorConstants.greenShade300,
+                                borderRadius: BorderRadius.circular(6),
+                              ),
                               child: Padding(
                                 padding: AppPaddingAll.m.value,
                                 child: Text(

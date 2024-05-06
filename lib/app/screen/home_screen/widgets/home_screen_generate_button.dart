@@ -71,7 +71,7 @@ class HomeScreenGenerateButton extends StatelessWidget {
                                   },
                                   child: const Text(TextConstants.newGenerate)),
                             ],
-                          )
+                          ),
                         ],
                       )
                     ],
