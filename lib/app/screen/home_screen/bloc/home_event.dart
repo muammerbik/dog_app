@@ -39,9 +39,20 @@ class ChangeTextFieldStatus extends HomeEvent {
 }
 
 class SearchBarEvent extends HomeEvent {
-  const SearchBarEvent({required this.searchName});
+  const SearchBarEvent({
+    required this.searchName,
+  });
   final String searchName;
 
   @override
-  List<Object> get props => [searchName];
+  List<Object> get props => [
+        searchName,
+      ];
+}
+
+class SearchDogBreedsEvent extends HomeEvent {
+  const SearchDogBreedsEvent();
+
+  @override
+  List<Object> get props => [];
 }
