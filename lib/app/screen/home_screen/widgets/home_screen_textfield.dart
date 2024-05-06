@@ -22,7 +22,6 @@ class HomeScreenTextField extends StatelessWidget {
           onChanged: (value) {
             bloc.add(const SearchDogBreedsEvent());
           },
-          autofocus: true,
           controller: bloc.state.searchController,
           decoration: const InputDecoration(
             hintText: TextConstants.search,

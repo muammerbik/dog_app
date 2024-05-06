@@ -35,7 +35,7 @@ class HomeScrenGridContainer extends StatelessWidget {
           // Alert dialogu göster
           showDialog(
             context: context,
-            builder: (context) => HomeScreenAlertDialog(),
+            builder: (context) => const HomeScreenAlertDialog(),
           );
         },
         child: Container(

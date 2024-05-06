@@ -11,12 +11,12 @@ class SettingsModel {
 }
 
 List<SettingsModel> settingsModelList = [
-  SettingsModel(title: "Premium", icon: Icon(Icons.money)),
-  SettingsModel(title: "Share app", icon: Icon(Icons.send)),
-  SettingsModel(title: "Rate US", icon: Icon(Icons.star)),
-  SettingsModel(title: "Contact Us", icon: Icon(Icons.contact_emergency)),
-   SettingsModel(title: "Terms of service", icon: Icon(Icons.document_scanner_outlined)),
-   SettingsModel(title: "Privacy Policy", icon: Icon(Icons.private_connectivity)),
+  SettingsModel(title: "Premium", icon: const Icon(Icons.money)),
+  SettingsModel(title: "Share app", icon: const Icon(Icons.send)),
+  SettingsModel(title: "Rate US", icon: const Icon(Icons.star)),
+  SettingsModel(title: "Contact Us", icon: const Icon(Icons.contact_emergency)),
+   SettingsModel(title: "Terms of service", icon: const Icon(Icons.document_scanner_outlined)),
+   SettingsModel(title: "Privacy Policy", icon: const Icon(Icons.private_connectivity)),
 
 
 

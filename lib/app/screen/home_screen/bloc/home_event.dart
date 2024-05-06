@@ -30,26 +30,6 @@ class FetchRandomImageEvent extends HomeEvent {
   List<Object> get props => [fetchRandomImage];
 }
 
-class ChangeTextFieldStatus extends HomeEvent {
-  const ChangeTextFieldStatus({required this.textFieldSatus});
-  final int textFieldSatus;
-
-  @override
-  List<Object> get props => [textFieldSatus];
-}
-
-class SearchBarEvent extends HomeEvent {
-  const SearchBarEvent({
-    required this.searchName,
-  });
-  final String searchName;
-
-  @override
-  List<Object> get props => [
-        searchName,
-      ];
-}
-
 class SearchDogBreedsEvent extends HomeEvent {
   const SearchDogBreedsEvent();
 

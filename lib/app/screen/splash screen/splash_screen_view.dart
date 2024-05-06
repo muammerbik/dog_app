@@ -22,7 +22,7 @@ class _SplashScreenViewState extends State<SplashScreenView> {
         if (state.status == HomeStatus.succes) {
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => HomeScreenView()),
+            MaterialPageRoute(builder: (context) => const HomeScreenView()),
           );
         }
       },
@@ -56,7 +56,7 @@ class _SplashScreenViewState extends State<SplashScreenView> {
                         ),
                       );
                     } else {
-                      return SizedBox.shrink();
+                      return const SizedBox.shrink();
                     }
                   },
                 ),

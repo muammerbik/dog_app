@@ -7,7 +7,6 @@ class HomeState extends Equatable {
   final List<DogBreedModel> dogBreedsList;
   final int selectedIndex;
   final String fetchImageName;
-  final int textFieldStatus;
   final String searchName;
   final List<DogBreedModel> searchList;
   TextEditingController searchController = TextEditingController();
@@ -17,7 +16,6 @@ class HomeState extends Equatable {
     required this.dogBreedsList,
     required this.selectedIndex,
     required this.fetchImageName,
-    required this.textFieldStatus,
     required this.searchName,
     required this.searchList,
     required this.searchController,
@@ -28,7 +26,6 @@ class HomeState extends Equatable {
     List<DogBreedModel>? dogBreedsList,
     int? selectedIndex,
     String? fetchImageName,
-    int? textFieldStatus,
     String? searchName,
     List<DogBreedModel>? searchList,
     TextEditingController? searchController,
@@ -38,7 +35,6 @@ class HomeState extends Equatable {
       dogBreedsList: dogBreedsList ?? this.dogBreedsList,
       selectedIndex: selectedIndex ?? this.selectedIndex,
       fetchImageName: fetchImageName ?? this.fetchImageName,
-      textFieldStatus: textFieldStatus ?? this.textFieldStatus,
       searchName: searchName ?? this.searchName,
       searchList: searchList ?? this.searchList,
       searchController : searchController ?? this.searchController,
@@ -51,7 +47,6 @@ class HomeState extends Equatable {
         dogBreedsList,
         selectedIndex,
         fetchImageName,
-        textFieldStatus,
         searchName,
         searchList,
         searchController

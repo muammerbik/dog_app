@@ -13,7 +13,7 @@ class HomeScreenAppbar extends StatelessWidget implements PreferredSizeWidget {
         IconButton(
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => SettingsScreenView(),
+                builder: (context) => const SettingsScreenView(),
               ));
             },
             icon: const Icon(Icons.settings))

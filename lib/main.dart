@@ -1,9 +1,7 @@
 import 'package:dogs_app/app/core/constants/color_constants.dart';
 import 'package:dogs_app/app/core/constants/text_constants.dart';
 import 'package:dogs_app/app/core/get_it/get_it.dart';
-import 'package:dogs_app/app/core/navigator_helper/navigator_helper.dart';
 import 'package:dogs_app/app/screen/home_screen/bloc/home_bloc.dart';
-import 'package:dogs_app/app/screen/settings_screen/bloc/settings_bloc.dart';
 import 'package:dogs_app/app/screen/splash%20screen/splash_screen_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -29,9 +27,6 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => locator.get<SettingsBloc>(),
-        ),
-        BlocProvider(
           create: (context) => locator.get<HomeBloc>(),
         ),
       ],
@@ -41,7 +36,6 @@ class MyApp extends StatelessWidget {
                 const AppBarTheme(backgroundColor: ColorConstants.white),
             scaffoldBackgroundColor: ColorConstants.white),
         debugShowCheckedModeBanner: false,
-        navigatorKey: Navigation.navigationKey,
         title: TextConstants.dogApp,
         home: const SplashScreenView(),
       ),

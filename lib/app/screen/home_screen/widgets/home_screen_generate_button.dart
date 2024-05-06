@@ -18,7 +18,7 @@ class HomeScreenGenerateButton extends StatelessWidget {
           bloc.add(FetchRandomImageEvent(
             fetchRandomImage: state.dogBreedsList[state.selectedIndex].name!,
           ));
-          await Future.delayed(Duration(microseconds: 300)).whenComplete(
+          await Future.delayed(const Duration(microseconds: 300)).whenComplete(
             () {
               showDialog(
                 context: context,
@@ -37,7 +37,7 @@ class HomeScreenGenerateButton extends StatelessWidget {
                           height: DeviceConfig.screenHeight! * 0.40,
                           width: DeviceConfig.screenWidth! * 0.45,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
+                            borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(12),
                               topRight: Radius.circular(12),
                             ),
@@ -58,7 +58,7 @@ class HomeScreenGenerateButton extends StatelessWidget {
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },
-                                  child: Text(TextConstants.Cancel)),
+                                  child: const Text(TextConstants.cancel)),
                               ElevatedButton(
                                   onPressed: () {
                                     bloc.add(
@@ -69,7 +69,7 @@ class HomeScreenGenerateButton extends StatelessWidget {
                                       ),
                                     );
                                   },
-                                  child: Text(TextConstants.newGenerate)),
+                                  child: const Text(TextConstants.newGenerate)),
                             ],
                           )
                         ],
@@ -89,10 +89,10 @@ class HomeScreenGenerateButton extends StatelessWidget {
             color: ColorConstants.greenShade600,
             border: Border.all(color: ColorConstants.white, width: 2),
           ),
-          child: Align(
+          child: const Align(
             alignment: Alignment.center,
             child: Text(
-              TextConstants.Generate,
+              TextConstants.generate,
               style: TextStyle(color: ColorConstants.white),
             ),
           ),

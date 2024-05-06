@@ -22,7 +22,7 @@ class HomeScreenAlertDialog extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: AppRadius.m.value,
         ),
-        content: Container(
+        content: SizedBox(
           height: state.dogBreedsList[state.selectedIndex].subBreeds!.isNotEmpty
               ? DeviceConfig.screenHeight! * 0.61
               : DeviceConfig.screenHeight! * 0.55,

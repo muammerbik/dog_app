@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
-import 'package:dogs_app/app/core/get_it/get_it.dart';
 import 'package:dogs_app/app/data/data_sources/remote_data_source.dart';
 import 'package:dogs_app/app/data/models/dog_breed_model.dart';
 import 'package:dogs_app/app/data/repositories/dog_repository.dart';
@@ -12,24 +11,20 @@ part 'home_state.dart';
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final DogRepository _dogRepository = DogRepository();
   DogRemoteDataSourceImpl dogData = DogRemoteDataSourceImpl();
-
   HomeBloc()
       : super(
           HomeState(
               status: HomeStatus.init,
-              dogBreedsList: [],
+              dogBreedsList: const [],
               selectedIndex: 0,
               fetchImageName: "",
-              textFieldStatus: 0,
-              searchList: [],
+              searchList: const [],
               searchController: TextEditingController(),
               searchName: ""),
         ) {
     on<FetchDogBreedsEvent>(onFetchDogBreedsEvent);
     on<SetSelectedIndexEvent>(onSetSelectedIndexEvent);
     on<FetchRandomImageEvent>(onFetchRandomImageEvent);
-    on<ChangeTextFieldStatus>(onChangeTextFieldStatus);
-    on<SearchBarEvent>(onSearchActive);
     on<SearchDogBreedsEvent>(onSearchDogBreedsEvent);
   }
 
@@ -65,21 +60,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     }
   }
 
-  void onChangeTextFieldStatus(
-      ChangeTextFieldStatus event, Emitter<HomeState> emit) {
-    emit(state.copyWith(textFieldStatus: event.textFieldSatus));
-  }
-
-  Future<void> onSearchActive(
-      SearchBarEvent event, Emitter<HomeState> emit) async {
-    emit(state.copyWith(status: HomeStatus.loading));
-    var searchQuery = event.searchName.toLowerCase();
-    var filteredBreeds = state.dogBreedsList
-        .where((breed) => breed.name!.toLowerCase().contains(searchQuery))
-        .toList();
-    emit(state.copyWith(
-        status: HomeStatus.succes, dogBreedsList: filteredBreeds));
-  }
 
   void onSearchDogBreedsEvent(
       SearchDogBreedsEvent event, Emitter<HomeState> emit) {

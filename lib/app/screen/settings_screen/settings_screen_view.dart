@@ -8,7 +8,7 @@ class SettingsScreenView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SettingsScreenAppbar(),
+      appBar: const SettingsScreenAppbar(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12),
         child: ListView.separated(
@@ -16,7 +16,7 @@ class SettingsScreenView extends StatelessWidget {
             SettingsModel settings = settingsModelList[index];
             return ListTile(
               leading: settings.icon,
-              trailing: Icon(Icons.arrow_back),
+              trailing: const Icon(Icons.arrow_back),
               title: Text(settings.title),
               onTap: () {
               
@@ -24,7 +24,7 @@ class SettingsScreenView extends StatelessWidget {
             );
           },
           separatorBuilder: (context, index) {
-            return Divider(
+            return const Divider(
               height: 0,
               indent: 18,
             );
