@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'dart:ui';
-
 import 'package:dogs_app/app/core/constants/color_constants.dart';
 import 'package:dogs_app/app/core/device_config/device_config.dart';
 import 'package:dogs_app/app/screen/home_screen/bloc/home_bloc.dart';

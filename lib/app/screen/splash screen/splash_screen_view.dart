@@ -41,7 +41,7 @@ class _SplashScreenViewState extends State<SplashScreenView> {
                     image: DecorationImage(
                       fit: BoxFit.contain,
                       image: AssetImage(
-                        "assets/images/dog.png",
+                        "assets/icons/dog.png",
                       ),
                     ),
                   ),
@@ -52,7 +52,7 @@ class _SplashScreenViewState extends State<SplashScreenView> {
                       return Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 120),
                         child: LinearProgressIndicator(
-                          color: ColorConstants.greenShade300,
+                          color: ColorConstants.orangeColor,
                         ),
                       );
                     } else {
