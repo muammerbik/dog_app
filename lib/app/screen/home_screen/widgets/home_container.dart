@@ -7,12 +7,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class HomeNameContainer extends StatelessWidget {
+class HomeContainer extends StatelessWidget {
   final int index;
   final String name;
   final File imageUrl;
 
-  const HomeNameContainer(
+  const HomeContainer(
       {super.key,
       required this.index,
       required this.name,
@@ -23,6 +23,8 @@ class HomeNameContainer extends StatelessWidget {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) => GestureDetector(
         onTap: () {
+          FocusManager.instance.primaryFocus?.unfocus();
+          
           context
               .read<HomeBloc>()
               .add(SetSelectedIndexEvent(selectedIndex: index));
@@ -33,6 +35,7 @@ class HomeNameContainer extends StatelessWidget {
 
           showDialog(
             context: context,
+            barrierDismissible: true,
             builder: (context) => const HomeAlertDialog(),
           );
         },
