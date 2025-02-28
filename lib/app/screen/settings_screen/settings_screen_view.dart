@@ -1,26 +1,29 @@
+import 'package:dogs_app/app/core/constants/text_constants.dart';
+import 'package:dogs_app/app/screen/home_screen/widgets/custom_appBar.dart';
 import 'package:flutter/material.dart';
-import 'package:dogs_app/app/screen/settings_screen/widgets/setting_screen_appbar.dart';
 import 'package:dogs_app/app/data/models/settings_model.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SettingsScreenView extends StatelessWidget {
-  const SettingsScreenView({Key? key}) : super(key: key);
+  const SettingsScreenView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const SettingsScreenAppbar(),
+      appBar: const CustomAppBarView(
+        appBarTitle: TextConstants.settingsTitle,
+        centerTitle: true,
+      ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12),
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
         child: ListView.separated(
           itemBuilder: (context, index) {
             SettingsModel settings = settingsModelList[index];
             return ListTile(
               leading: settings.icon,
-              trailing: const Icon(Icons.arrow_back),
+              trailing: const Icon(Icons.arrow_forward),
               title: Text(settings.title),
-              onTap: () {
-              
-              },
+              onTap: () {},
             );
           },
           separatorBuilder: (context, index) {
