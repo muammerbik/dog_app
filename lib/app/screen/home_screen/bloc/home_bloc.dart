@@ -37,7 +37,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
     if (response.success) {
       emit(state.copyWith(
-          status: HomeStatus.succes, dogBreedsList: response.data));
+          status: HomeStatus.success, dogBreedsList: response.data));
     } else {
       emit(state.copyWith(
         status: HomeStatus.error,
@@ -56,7 +56,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         await _dogRepository.getBreedsImage(name: event.fetchRandomImage);
     if (response.success) {
       emit(state.copyWith(
-          status: HomeStatus.succes, fetchImageName: response.data));
+          status: HomeStatus.success, fetchImageName: response.data));
     }
   }
 

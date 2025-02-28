@@ -18,7 +18,7 @@ class _SplashScreenViewState extends State<SplashScreenView> {
   Widget build(BuildContext context) {
     return BlocListener<HomeBloc, HomeState>(
       listener: (context, state) {
-        if (state.status == HomeStatus.succes) {
+        if (state.status == HomeStatus.success) {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(

@@ -1,7 +1,8 @@
 part of 'home_bloc.dart';
 
-enum HomeStatus { init, loading, succes, error }
+enum HomeStatus { init, loading, success, error }
 
+// ignore: must_be_immutable
 class HomeState extends Equatable {
   final HomeStatus status;
   final List<DogBreedModel> dogBreedsList;
@@ -11,7 +12,7 @@ class HomeState extends Equatable {
   final List<DogBreedModel> searchList;
   TextEditingController searchController = TextEditingController();
 
-   HomeState({
+  HomeState({
     required this.status,
     required this.dogBreedsList,
     required this.selectedIndex,
@@ -37,7 +38,7 @@ class HomeState extends Equatable {
       fetchImageName: fetchImageName ?? this.fetchImageName,
       searchName: searchName ?? this.searchName,
       searchList: searchList ?? this.searchList,
-      searchController : searchController ?? this.searchController,
+      searchController: searchController ?? this.searchController,
     );
   }
 
