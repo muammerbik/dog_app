@@ -29,6 +29,7 @@ class _SplashScreenViewState extends State<SplashScreenView> {
       },
       bloc: locator.get<HomeBloc>()..add(const FetchDogBreedsEvent()),
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: ColorConstants.white,
         body: SafeArea(
           child: Center(

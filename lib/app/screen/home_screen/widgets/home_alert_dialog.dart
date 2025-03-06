@@ -123,7 +123,6 @@ class HomeAlertDialog extends StatelessWidget {
                           ),
                           backgroundColor: ColorConstants.red),
                       onPressed: () {
-                        /*  Navigator.pop(context); */
                         FocusScope.of(context).unfocus();
                         Navigator.pop(context);
                       },

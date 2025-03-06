@@ -1,7 +1,6 @@
 part of 'home_bloc.dart';
 
 enum HomeStatus { init, loading, success, error }
-
 // ignore: must_be_immutable
 class HomeState extends Equatable {
   final HomeStatus status;

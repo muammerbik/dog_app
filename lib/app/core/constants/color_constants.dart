@@ -9,4 +9,6 @@ class ColorConstants {
   static Color get greenShade600 => Colors.green.shade600;
   static Color orangeColor = const Color(0xFFfd6d28);
   static Color black38 = Colors.black38;
+  static Color grey600 = Colors.grey.shade600;
+  static Color grey700 = Colors.grey.shade700;
 }

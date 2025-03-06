@@ -38,7 +38,7 @@ class _CustomAppBarViewState extends State<CustomAppBarView> {
         surfaceTintColor: ColorConstants.white,
         centerTitle: widget.centerTitle,
         backgroundColor: widget.appBarColor ?? Colors.white,
-        leading: widget.leadingIcon ?? null,
+        leading: widget.leadingIcon,
         title: Text(
           widget.appBarTitle!,
           style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold),

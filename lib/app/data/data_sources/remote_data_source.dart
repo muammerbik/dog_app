@@ -5,7 +5,9 @@ import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 
 class DogRemoteDataSourceImpl {
+
   final String fetchAllBreeds = "https://dog.ceo/api/breeds/list/all";
+
   Future<List<DogBreedModel>> fetchBreeds() async {
     Directory directory = await getApplicationDocumentsDirectory();
     directory.listSync().forEach((FileSystemEntity entity) {
@@ -13,6 +15,7 @@ class DogRemoteDataSourceImpl {
         entity.deleteSync();
       }
     });
+    
     var response = await http.get(Uri.parse(fetchAllBreeds));
     var responseJson = jsonDecode(response.body);
     var responseResult = responseJson["message"] as Map<String, dynamic>;
@@ -53,7 +56,8 @@ class DogRemoteDataSourceImpl {
 
       if (imageUrl.isNotEmpty) {
         breedList.add(
-            DogBreedModel(name: breed, imagePath: file, subBreeds: subBreeds));
+          DogBreedModel(name: breed, imagePath: file, subBreeds: subBreeds),
+        );
       }
     }
     return breedList;

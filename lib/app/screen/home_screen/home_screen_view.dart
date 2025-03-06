@@ -1,3 +1,4 @@
+import 'package:dogs_app/app/core/constants/color_constants.dart';
 import 'package:dogs_app/app/core/constants/text_constants.dart';
 import 'package:dogs_app/app/core/enums/app_padding.dart';
 import 'package:dogs_app/app/screen/home_screen/bloc/home_bloc.dart';
@@ -17,7 +18,6 @@ class HomeScreenView extends StatelessWidget {
     var bloc = context.read<HomeBloc>();
     return GestureDetector(
       onTap: () {
-        // When tapping anywhere on the screen, remove focus
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
@@ -27,7 +27,6 @@ class HomeScreenView extends StatelessWidget {
           actionIcons: [
             IconButton(
               onPressed: () {
-                // Remove focus before navigation
                 FocusScope.of(context).unfocus();
                 Navigator.of(context).push(
                   MaterialPageRoute(
@@ -71,7 +70,7 @@ class HomeScreenView extends StatelessWidget {
                                 Icon(
                                   Icons.search_off,
                                   size: 48.sp,
-                                  color: Colors.grey.shade600,
+                                  color: ColorConstants.grey600,
                                 ),
                                 SizedBox(height: 8.h),
                                 Text(
@@ -79,7 +78,7 @@ class HomeScreenView extends StatelessWidget {
                                   style: TextStyle(
                                     fontSize: 18.sp,
                                     fontWeight: FontWeight.w500,
-                                    color: Colors.grey.shade700,
+                                    color: ColorConstants.grey700,
                                   ),
                                   textAlign: TextAlign.center,
                                 ),
